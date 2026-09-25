@@ -16,7 +16,7 @@ import jakarta.annotation.PreDestroy;
 
 @Component
 @RequestScope
-@JsonIgnoreProperties({"targetSource", "advisors"}) //Para evitar errores porque este componente tiene un alcance menor a los componente de los cuales esta conformado, basicamente ignora los errores que se pones entre ()
+@JsonIgnoreProperties({"targetSource", "advisors"}) //Para evitar errores porque este componente tiene un alcance menor a los componentes de los cuales está conformado, básicamente ignora los errores que se ponen entre ()
 public class Invoice {
     @Autowired //Porque es un componente se puede hacer esto
     private Client client;
@@ -25,13 +25,13 @@ public class Invoice {
     @Autowired
     private List<Item> items;
     
-    @PostConstruct //Se ejecuta cuando se cree el componente en el contexto, se ejecuta despues de que se haya cargado los datos de la factura
+    @PostConstruct //Se ejecuta cuando se cree el componente en el contexto, se ejecuta después de que se hayan cargado los datos de la factura
     public void init(){
         System.out.println("Creando el componente de la factura");
         client.setName(client.getName().toUpperCase().concat(" ").concat(client.getLastaname().toUpperCase()));
     }
 
-    @PreDestroy //Sonm acciones que tomamos antes de que se cierre o elimine el bean o componente
+    @PreDestroy //Son acciones que tomamos antes de que se cierre o elimine el bean o componente
     public void destroy(){
         System.out.println("Destruyendo el componente o bean factura!");
     }
